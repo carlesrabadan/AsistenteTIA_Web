@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario Asistente TIA Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Asistente de IA para TIA Portal V16</h1>
+        <p>¡Bienvenido! Para poder guiarte de la mejor manera, por favor, completa este cuestionario inicial sobre tu experiencia y tu proyecto actual.</p>
+        
+        <form action="/ask_gemini" method="post">
+            <fieldset>
+                <legend>1. Nivel de Experiencia General en TIA Portal:</legend>
+                <label><input type="radio" name="experiencia_tia" value="completo principiante" required> Soy un completo principiante (nunca lo he usado).</label><br>
+                <label><input type="radio" name="experiencia_tia" value="curso básico, poca práctica"> He hecho algún curso básico, pero no tengo experiencia práctica.</label><br>
+                <label><input type="radio" name="experiencia_tia" value="proyectos sencillos, necesito ayuda"> He hecho algún proyecto sencillo, pero aún necesito mucha ayuda.</label><br>
+                <label><input type="radio" name="experiencia_tia" value="experiencia con otros PLCs, nuevo en TIA Portal"> Tengo experiencia con otras plataformas de PLC, pero soy nuevo en TIA Portal.</label><br>
+                <label>Otro: <input type="text" name="experiencia_tia_otro"></label>
+            </fieldset>
+
+            <fieldset>
+                <legend>2. Experiencia con PLCs y Automatización:</legend>
+                <label><input type="radio" name="experiencia_plc" value="ninguna" required> Ninguna, es mi primera vez con PLCs.</label><br>
+                <label><input type="radio" name="experiencia_plc" value="otros PLCs"> He trabajado con otros PLCs (ej. Rockwell, Schneider).</label><br>
+                <label><input type="radio" name="experiencia_plc" value="conceptos básicos de automatización"> Entiendo los conceptos básicos de automatización.</label><br>
+                <label>Otro: <input type="text" name="experiencia_plc_otro"></label>
+            </fieldset>
+
+            <fieldset>
+                <legend>3. Objetivo del Proyecto Actual (Datos Clave):</legend>
+                <label for="tipo_aplicacion">a) ¿Qué tipo de aplicación o proceso quieres automatizar (ej., control de nivel en un tanque, cinta transportadora)?</label><br>
+                <input type="text" id="tipo_aplicacion" name="tipo_aplicacion" required><br>
+
+                <label for="entradas_digitales">b) ¿Cuántas entradas digitales esperas tener (ej., botones, sensores ON/OFF)?</label><br>
+                <input type="number" id="entradas_digitales" name="entradas_digitales" min="0" required><br>
+
+                <label for="salidas_digitales">c) ¿Cuántas salidas digitales esperas controlar (ej., motores, luces, válvulas ON/OFF)?</label><br>
+                <input type="number" id="salidas_digitales" name="salidas_digitales" min="0" required><br>
+
+                <label for="analogicas_info">d) ¿Vas a usar entradas o salidas analógicas? Si es así, ¿cuántas y qué tipo de señal (0-10V, 4-20mA, etc.)?</label><br>
+                <input type="text" id="analogicas_info" name="analogicas_info" placeholder="Ej: 2 entradas (0-10V), 1 salida (4-20mA)" required><br>
+
+                <label for="hmi_necesario">e) ¿Necesitarás una interfaz HMI (pantalla de operador) para tu proyecto?</label><br>
+                <select id="hmi_necesario" name="hmi_necesario" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="No lo sé">No lo sé aún</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select><br>
+
+                <label for="cpu_modelo">f) ¿Qué CPU (modelo de PLC) tienes pensado usar o estás usando (ej. S7-1200, S7-1500)?</label><br>
+                <input type="text" id="cpu_modelo" name="cpu_modelo" placeholder="Ej: S7-1200 CPU 1214C DC/DC/RLY" required><br>
+            </fieldset>
+
+            <button type="submit">Enviar al Asistente</button>
+        </form>
+    </div>
+</body>
+</html>
