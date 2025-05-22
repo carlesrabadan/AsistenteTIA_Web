@@ -1,0 +1,22 @@
+# Ignorar archivos del entorno virtual
+venv/
+.venv/
+
+# Ignorar archivos específicos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info
+.pytest_cache/
+
+# Ignorar archivos de configuración sensibles
+.env
+.flaskenv
+
+# Ignorar logs, bases de datos (si hubiera)
+*.log
+*.db

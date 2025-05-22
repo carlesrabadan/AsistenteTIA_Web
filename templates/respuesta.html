@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respuesta del Asistente IA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tu Asistente de IA para TIA Portal</h1>
+        <div class="chat-window">
+            <h2>Respuesta del Asistente:</h2>
+            <div class="message assistant-message">
+                {{ gemini_response | safe }}
+            </div>
+
+            <div class="chat-history">
+                {% if chat_history %}
+                    <h3>Historial de la Conversación:</h3>
+                    {# Iterar sobre el historial de chat para mostrarlo #}
+                    {% for message in chat_history %}
+                        {% if message.role == 'user' %}
+                            <div class="message user-message">
+                                <strong>Tú:</strong> {{ message.content }}
+                            </div>
+                        {% else %}
+                            <div class="message assistant-message">
+                                <strong>Asistente:</strong> {{ message.content | safe }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <h2>¿Qué más quieres saber?</h2>
+            <form action="/continue_chat" method="post">
+                <textarea name="user_query" rows="4" placeholder="Escribe tu pregunta aquí..." required></textarea><br>
+                <button type="submit">Enviar Pregunta</button>
+            </form>
+            <a href="/" class="button">Iniciar Nueva Conversación</a>
+        </div>
+    </div>
+</body>
+</html>
