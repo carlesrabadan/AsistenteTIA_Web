@@ -32645,4 +32645,4 @@ Encontrará el manual de configuración en Siemens Industry Automation and Drive
 & Support en Internet, en la ID de artículo 19440762 (http://
 support.automation.siemens.com/WW/view/es/19440762).
 ● STEP 7
-�
+ 

@@ -1,6 +1,10 @@
 # Ignorar archivos del entorno virtual
 venv/
 .venv/
+venv_tia_ia/ # Añadiste esta, está bien también
+
+# Base de datos ChromaDB (se puede recrear)
+chroma_db/   # <-- ¡ESTA ES LA LÍNEA IMPORTANTE QUE HEMOS AÑADIDO!
 
 # Ignorar archivos específicos de Python
 __pycache__/
